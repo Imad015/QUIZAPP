@@ -1,6 +1,16 @@
 import 'dart:io';
 import 'Quesn.dart';
 
+int score = 0;
+void checkAnswer(String Quesn, String answer, int pulsScore) {
+  if (Quesn == answer) {
+    score = score + pulsScore;
+    print("correct answer");
+  } else {
+    print("the answer is false");
+  }
+}
+
 void main() {
   List<Eesy> level1 = [
     Eesy(
@@ -10,12 +20,12 @@ void main() {
     Eesy(text: "On which continent is the Maldives: ", answer: "african"),
     Eesy(text: "which to capital to brazile: ", answer: "brazila"),
   ];
-  int score = 0;
 
   for (var i = 0; i < level1.length; i++) {
     stdout.write(level1[i].text);
     String? Q1 = stdin.readLineSync();
-    check(Q1!.toLowerCase(), level1[i].answer, score, 10);
+    checkAnswer(Q1!.toLowerCase(), level1[i].answer, 10);
+    print(score);
   }
   print("your score is ${score}");
   if (score >= 20) {
@@ -61,12 +71,13 @@ void main() {
     for (var i = 0; i < level2.length; i++) {
       stdout.write(level2[i].text);
       String? Q2 = stdin.readLineSync();
-      check(Q2!.toLowerCase(), level2[i].answer, score, 15);
+      checkAnswer(Q2!.toLowerCase(), level2[i].answer, 15);
     }
+    print("your new score is ${score}");
   } else {
     print("Sorry but you score is Not enough");
   }
-  print("your new score is ${score}");
+
   if (score >= 60) {
     List<Hard> level3 = [
       Hard(
@@ -107,7 +118,7 @@ void main() {
     for (var i = 0; i < level3.length; i++) {
       stdout.write(level3[i].text);
       String? Q3 = stdin.readLineSync();
-      check(Q3!.toLowerCase(), level3[i].answer, score, 20);
+      checkAnswer(Q3!.toLowerCase(), level3[i].answer, 20);
     }
   } else {
     print("Sorry but you score is Not enough");
@@ -119,14 +130,5 @@ void main() {
     print("your are bed man");
   } else {
     print("thank you for play this game");
-  }
-}
-
-void check(String Quesn, String answer, int score, int pulsScore) {
-  if (Quesn == answer) {
-    score += pulsScore;
-    print("correct answer");
-  } else {
-    print("the answer is false");
   }
 }
