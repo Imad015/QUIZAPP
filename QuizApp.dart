@@ -15,12 +15,7 @@ void main() {
   for (var i = 0; i < level1.length; i++) {
     stdout.write(level1[i].text);
     String? Q1 = stdin.readLineSync();
-    if (Q1!.toLowerCase() == level1[i].answer) {
-      score += 10;
-      print("correct answer");
-    } else {
-      print("the answer is false");
-    }
+    check(Q1!.toLowerCase(), level1[i].answer, score, 10);
   }
   print("your score is ${score}");
   if (score >= 20) {
@@ -66,12 +61,7 @@ void main() {
     for (var i = 0; i < level2.length; i++) {
       stdout.write(level2[i].text);
       String? Q2 = stdin.readLineSync();
-      if (Q2!.toLowerCase() == level2[i].answer) {
-        score += 15;
-        print("correct answer");
-      } else {
-        print("the answer is false");
-      }
+      check(Q2!.toLowerCase(), level2[i].answer, score, 15);
     }
   } else {
     print("Sorry but you score is Not enough");
@@ -116,13 +106,8 @@ void main() {
     ];
     for (var i = 0; i < level3.length; i++) {
       stdout.write(level3[i].text);
-      String? Q2 = stdin.readLineSync();
-      if (Q2!.toLowerCase() == level3[i].answer) {
-        score += 20;
-        print("correct answer");
-      } else {
-        print("the answer is false");
-      }
+      String? Q3 = stdin.readLineSync();
+      check(Q3!.toLowerCase(), level3[i].answer, score, 20);
     }
   } else {
     print("Sorry but you score is Not enough");
@@ -134,5 +119,14 @@ void main() {
     print("your are bed man");
   } else {
     print("thank you for play this game");
+  }
+}
+
+void check(String Quesn, String answer, int score, int pulsScore) {
+  if (Quesn == answer) {
+    score += pulsScore;
+    print("correct answer");
+  } else {
+    print("the answer is false");
   }
 }

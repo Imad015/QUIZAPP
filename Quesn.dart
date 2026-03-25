@@ -14,5 +14,5 @@ class Hard {
   final String text;
   final String answer;
   String? hint;
-  Hard({required this.text, required this.answer , required this.hint});
+  Hard({required this.text, required this.answer, required this.hint});
 }
